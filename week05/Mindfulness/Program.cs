@@ -1,18 +1,6 @@
+// Exceeding Requirements: I added a fourth kind of mindfulness activity: the Body Scan Activity. It guides the user through a progressive muscle relaxation exercise, focusing on and releasing tension from different body parts (toes, legs, torso, arms, shoulders, and head) with a countdown pause after each one, repeating until the chosen duration has passed.
+
 using System;
-
-// ============================================================================
-// EXCEEDING REQUIREMENTS:
-// To show creativity and exceed the core requirements, I added a fourth kind
-// of mindfulness activity: the Body Scan Activity (see BodyScanActivity.cs).
-// It inherits from the same Activity base class as the other three
-// activities (reusing the shared starting/ending messages and countdown
-// animation), but it guides the user through a progressive muscle
-// relaxation exercise, sequentially focusing on and releasing tension from
-// different body parts (toes, legs, torso, arms, shoulders, and head) with
-// a countdown pause after each one, repeating until the chosen duration has
-// elapsed. This is option 4 on the menu below.
-// ============================================================================
-
 class Program
 {
     static void Main(string[] args)
