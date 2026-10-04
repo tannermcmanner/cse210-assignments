@@ -7,6 +7,7 @@ class ListingActivity : Activity
 {
     private int _count;
     private List<string> _prompts;
+    private static Random _random = new Random();
 
     public ListingActivity()
         : base(
@@ -27,15 +28,47 @@ class ListingActivity : Activity
 
     public void Run()
     {
+        DisplayStartingMessage();
+
+        Console.WriteLine();
+        Console.WriteLine(GetRandomPrompt());
+        Console.WriteLine();
+        Console.Write("You have a few seconds to think of some answers...");
+        ShowCountDown(5);
+        Console.WriteLine();
+
+        Console.WriteLine();
+        Console.WriteLine("Start listing items (press enter after each item):");
+
+        List<string> items = GetListFromUser();
+        _count = items.Count;
+
+        Console.WriteLine();
+        Console.WriteLine($"You listed {_count} items!");
+
+        DisplayEndingMessage();
     }
 
     private string GetRandomPrompt()
     {
-        return "";
+        int index = _random.Next(_prompts.Count);
+        return _prompts[index];
     }
 
     private List<string> GetListFromUser()
     {
-        return new List<string>();
+        List<string> items = new List<string>();
+        DateTime endTime = DateTime.Now.AddSeconds(_duration);
+
+        while (DateTime.Now < endTime)
+        {
+            string item = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(item))
+            {
+                items.Add(item);
+            }
+        }
+
+        return items;
     }
 }

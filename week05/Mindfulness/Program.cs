@@ -1,5 +1,18 @@
 using System;
 
+// ============================================================================
+// EXCEEDING REQUIREMENTS:
+// To show creativity and exceed the core requirements, I added a fourth kind
+// of mindfulness activity: the Body Scan Activity (see BodyScanActivity.cs).
+// It inherits from the same Activity base class as the other three
+// activities (reusing the shared starting/ending messages and countdown
+// animation), but it guides the user through a progressive muscle
+// relaxation exercise, sequentially focusing on and releasing tension from
+// different body parts (toes, legs, torso, arms, shoulders, and head) with
+// a countdown pause after each one, repeating until the chosen duration has
+// elapsed. This is option 4 on the menu below.
+// ============================================================================
+
 class Program
 {
     static void Main(string[] args)
@@ -12,9 +25,17 @@ class Program
             Console.WriteLine("  1. Start breathing activity");
             Console.WriteLine("  2. Start reflecting activity");
             Console.WriteLine("  3. Start listing activity");
-            Console.WriteLine("  4. Quit");
+            Console.WriteLine("  4. Start body scan activity");
+            Console.WriteLine("  5. Quit");
             Console.Write("Select a choice from the menu: ");
             string choice = Console.ReadLine();
+
+            // Console.ReadLine() returns null if the input stream has ended
+            // (for example, piped input ran out), so quit instead of looping.
+            if (choice == null)
+            {
+                break;
+            }
 
             switch (choice)
             {
@@ -34,6 +55,11 @@ class Program
                     break;
 
                 case "4":
+                    BodyScanActivity bodyScanActivity = new BodyScanActivity();
+                    bodyScanActivity.Run();
+                    break;
+
+                case "5":
                     quit = true;
                     break;
 
